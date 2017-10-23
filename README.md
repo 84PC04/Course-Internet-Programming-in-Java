@@ -23,6 +23,7 @@ Softver:
 * Apache Tomcat Server - https://tomcat.apache.org/download-90.cgi
 * Eclipse - https://www.eclipse.org/downloads/?
 * ECLIPSE->GIT connector - http://www.eclipse.org/egit/
+* ECLIPSE-GIT connector (update link) - http://download.eclipse.org/egit/updates
 
 
 
