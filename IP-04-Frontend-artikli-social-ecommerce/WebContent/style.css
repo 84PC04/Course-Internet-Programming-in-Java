@@ -148,6 +148,7 @@ img.avatar-32 {
 object-fit to re-frame images rather than just stretch and resize them  === */
 
 @media (min-width: 800px) and (max-width: 1200px) {
+	
 [class*="card-"] figure {
     vertical-align: middle;
     text-align: center;
