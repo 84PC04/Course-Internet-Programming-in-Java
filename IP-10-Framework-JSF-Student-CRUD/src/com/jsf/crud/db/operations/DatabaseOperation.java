@@ -7,9 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
-
 import javax.faces.context.FacesContext;
-
 import com.jsf.crud.StudentBean;
 
 public class DatabaseOperation {
@@ -20,25 +18,34 @@ public class DatabaseOperation {
 	public static PreparedStatement pstmt;
 
 
-	public static Connection getConnection(){  
+	public static Connection getConnection() {  
 		try{  
+			// ucitavanje drivera
 			Class.forName("com.mysql.jdbc.Driver");     
-			String db_url ="jdbc:mysql://localhost:3306/students",
-					db_userName = "root",
-					db_password = "root";
+			
+			// definisanje connection string podataka
+			String db_url ="jdbc:mysql://localhost:3306/students";
+			String db_userName = "root";
+			String db_password = "root";
+			
+			// kreiranje konekcije
 			connObj = DriverManager.getConnection(db_url,db_userName,db_password);  
+			
 		} catch(Exception sqlException) {  
 			sqlException.printStackTrace();
 		}  
+		
 		return connObj;
 	}
 
 
 	public static ArrayList<StudentBean> getStudentsListFromDB() {
 		ArrayList<StudentBean> studentsList = new ArrayList<StudentBean>();  
+		
 		try {
 			stmtObj = getConnection().createStatement();    
 			resultSetObj = stmtObj.executeQuery("select * from student_record");    
+			
 			while(resultSetObj.next()) {  
 				StudentBean stuObj = new StudentBean(); 
 				stuObj.setId(resultSetObj.getInt("student_id"));  
@@ -51,6 +58,7 @@ public class DatabaseOperation {
 			}   
 			System.out.println("Total Records Fetched: " + studentsList.size());
 			connObj.close();
+			
 		} catch(Exception sqlException) {
 			sqlException.printStackTrace();
 		} 

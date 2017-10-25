@@ -8,9 +8,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:useBean id="mybean" class="primjer01.HelloWorld" scope="session" >
-            <jsp:setProperty name="mybean" property="name" value=" Hello world" />
+        <jsp:useBean id="objekt1" class="primjer01.HelloWorld" scope="session" >
+            <jsp:setProperty name="objekt1" property="name" value=" Hello world" />
         </jsp:useBean>
-        <h1><jsp:getProperty name="mybean" property="name" /></h1>
+        <h1><jsp:getProperty name="objekt1" property="name" /></h1>
     </body>
 </html>

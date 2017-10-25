@@ -51,6 +51,27 @@ public class UserServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		
+		if(request.getRequestURI().contains("/obrisiKorisnika")) {
+			String username = request.getParameter("username").toString();
+			String password = request.getParameter("password").toString();
+			
+			UserDB userDB = (UserDB) request.getServletContext().getAttribute("userDB");
+			if (userDB == null) {
+				userDB = new UserDB();
+			}
+			
+			User newUser = new User();
+			newUser.setUsername(username);
+			newUser.setPassword(password);
+			
+			userDB.getUsers().add(newUser);
+			
+			request.getServletContext().setAttribute("userDB", userDB);
+			RequestDispatcher dispatcher = null;
+			dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+		}
+		
 		if (request.getRequestURI().contains("/login")) {
 			String username = request.getParameter("username").toString();
 			String password = request.getParameter("password").toString();
