@@ -7,5 +7,26 @@
 <body>
 	<h1>Administratorski panel</h1>
 	<p>Dobrodošli na administratorski panel.</p>
+	
+	<h2>Unos novog korisnika</h2>
+	
+	<h:form>
+	
+		<h:outputLabel>Username</h:outputLabel><br/>
+		<h:inputText id="username" value="#{userController.newUser.username}"  />
+		<br/><br/>
+		
+		<h:outputLabel>Password</h:outputLabel><br/>
+		<h:inputText id="password" value="#{userController.newUser.password}"  />
+		<br/><br/>
+		
+		<h:outputLabel>Account type</h:outputLabel><br/>
+		<h:inputText id="accountType" value="#{userController.newUser.accountType}"  />
+		<br/><br/>
+		
+		<h:commandButton value=" Create user " action="#{userController.addUser}"/>
+		<br/><br/>
+		
+	</h:form>
 </body>
 </html>

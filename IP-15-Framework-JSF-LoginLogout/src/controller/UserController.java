@@ -15,6 +15,7 @@ import model.User;
 @SessionScoped
 public class UserController {
 
+	private User newUser = new User();
 	private User currentUser = new User();
 	private User loggedUser = new User();
 	private String driver = "com.mysql.jdbc.Driver";
@@ -23,7 +24,9 @@ public class UserController {
 	private String password = "root";
 	private Connection connection = null;
 	private PreparedStatement ps = null;
+	
 	private String SELECT_LOGIN = "SELECT * FROM users WHERE username = ? AND password = ?";
+	private String INSERT_NEW_USER = "INSERT INTO users (username, password, accountType) VALUES (?, ?, ?)";
 	
 	public UserController() throws ClassNotFoundException, SQLException {
 		Class.forName(driver);
@@ -46,6 +49,31 @@ public class UserController {
 		this.loggedUser = loggedUser;
 	}
 	
+	public User getNewUser() {
+		return newUser;
+	}
+
+	public void setNewUser(User newUser) {
+		this.newUser = newUser;
+	}
+
+	public String addUser() {
+		try {      
+			ps = connection.prepareStatement(INSERT_NEW_USER);			
+			ps.setString(1, newUser.getUsername());
+			ps.setString(2, newUser.getPassword());
+			ps.setString(3, newUser.getAccountType());
+			int saveResult = ps.executeUpdate();
+			if (saveResult == 1) {
+				System.out.println("New user added successfully.");
+			}
+			connection.close();
+		} catch(Exception sqlException) {
+			sqlException.printStackTrace();
+		}
+		
+		return "success.xhtml";
+	}
 	public String login() throws SQLException {
 		String retVal = "login.xhtml";
 		
