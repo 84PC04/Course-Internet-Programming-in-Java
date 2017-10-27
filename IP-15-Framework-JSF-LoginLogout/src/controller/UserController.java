@@ -15,7 +15,7 @@ import model.User;
 @SessionScoped
 public class UserController {
 
-	private User newUser = new User();
+	private User newUser = new User(); 
 	private User currentUser = new User();
 	private User loggedUser = new User();
 	private String driver = "com.mysql.jdbc.Driver";

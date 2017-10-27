@@ -7,7 +7,7 @@
 <body>
 	<h1>Login forma</h1>
 	<p>Unesite ispravno korisničko ime i password za pristup sistemu.</p>
-	<h:form>
+	<h:form> 
 		<h:outputLabel>Username: </h:outputLabel><br/>
 		<h:inputText id="username" value="#{userController.currentUser.username}" required="true" requiredMessage=" * Obavezno polje" />
 		<h:message for="username" style="color: red;" /><br/>
